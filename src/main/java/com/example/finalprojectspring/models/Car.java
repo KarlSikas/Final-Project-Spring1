@@ -1,11 +1,22 @@
-package com.example.finalprojectspring.models;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.springframework.data.domain.Auditable;
 
-/**
- * @author Priit Enno
- * @ Date 22.03.2023
- */
-public class Car {
+import java.io.Serializable;
 
+@Entity
+@Data
+@EqualsAndHashCode(callSuper = true)
+
+public class Car extends Auditable<String> implements Serializable {
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String modelName;
     private String color;
     private String bodyType;
@@ -13,52 +24,6 @@ public class Car {
     private int yearOfProd;
     private int mileage;
     private int amount;
+    private boolean isBooked;
 
-    public String getModelName() {
-        return modelName;
-    }
-
-    public void setModelName(String modelName) {
-        this.modelName = modelName;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public String getBodyType() {
-        return bodyType;
-    }
-
-    public void setBodyType(String bodyType) {
-        this.bodyType = bodyType;
-    }
-
-    public int getYearOfProd() {
-        return yearOfProd;
-    }
-
-    public void setYearOfProd(int yearOfProd) {
-        this.yearOfProd = yearOfProd;
-    }
-
-    public int getMileage() {
-        return mileage;
-    }
-
-    public void setMileage(int mileage) {
-        this.mileage = mileage;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
 }
