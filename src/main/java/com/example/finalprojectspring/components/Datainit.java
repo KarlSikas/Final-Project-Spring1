@@ -34,7 +34,7 @@ public class Datainit {
 
         try {
             Car searchCar = carService.findCarByModelName(car.getModelName());
-            System.out.println("Cannot pre-initialize school: " + car.getModelName());
+            System.out.println("Cannot pre-initialize car: " + car.getModelName());
         } catch (CarNotFoundException e) {
             carService.addCar(car);
         }
