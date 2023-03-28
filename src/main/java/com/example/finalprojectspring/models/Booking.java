@@ -25,14 +25,14 @@ public class Booking extends Auditable<String> implements Serializable {
     private Long id;
     public String dateOfBooking;
     @OneToOne(cascade = CascadeType.MERGE)
-    private List<Customer> specializedCustomers;
+    private Customer customer;
     @OneToOne(cascade = CascadeType.MERGE)
-    private List<Car> specializedCars;
+    private Car car;
     public LocalDate dateFrom;
     public LocalDate dateTo;
 
     @OneToOne(cascade = CascadeType.MERGE)
-    private List<Branch> specializedBranches;
+    private Branch branch;
 
     public String returnBranch;
     public int amount;

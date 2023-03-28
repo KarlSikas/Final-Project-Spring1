@@ -27,7 +27,7 @@ public class Employee extends Auditable<String> implements Serializable {
     private UserType role;
 
     @OneToOne(cascade = CascadeType.MERGE)
-    private List<Branch> specializedBranches;
+    private Branch branch;
 
 
 }
