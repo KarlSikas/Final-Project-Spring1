@@ -1,46 +1,35 @@
 package com.example.finalprojectspring.models;
 
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.List;
+
 /**
- * @author Priit Enno
+ * @author Sergei Oksanen
  * @ Date 22.03.2023
  */
-public class Rental extends Booking {
 
-    public Employee employee;
-    public String dateOfReturn;
-    public Booking booking;
+
+@Entity
+@Data
+@EqualsAndHashCode(callSuper = true)
+public class Rental  extends Auditable<String> implements Serializable{
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @OneToOne(cascade = CascadeType.MERGE)
+    private List<Employee> specializedEmployees;
+    public LocalDate dateOfReturn;
+    @OneToOne(cascade = CascadeType.MERGE)
+    private List<Booking> specializedBookings;
     public String comments;
 
+    public boolean isActive;
 
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
-    public String getDateOfReturn() {
-        return dateOfReturn;
-    }
-
-    public void setDateOfReturn(String dateOfReturn) {
-        this.dateOfReturn = dateOfReturn;
-    }
-
-    public Booking getBooking() {
-        return booking;
-    }
-
-    public void setBooking(Booking booking) {
-        this.booking = booking;
-    }
-
-    public String getComments() {
-        return comments;
-    }
-
-    public void setComments(String comments) {
-        this.comments = comments;
-    }
 }

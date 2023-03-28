@@ -1,36 +1,30 @@
 package com.example.finalprojectspring.models;
 
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
+import java.util.List;
+
 /**
- * @author Priit Enno
+ * @author Sergei Oksanen
  * @ Date 22.03.2023
  */
-public class Branch {
+@Data
+@Entity
+@EqualsAndHashCode(callSuper = true)
+public class Branch extends Auditable<String> implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     public String address;   //address with the city
-    public String listOfOfficeEmployees;
-    public String listOfCurrentlyAvailableCars;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    private List<Employee> specializedEmployees;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    private List<Car> specializedCars;
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getListOfOfficeEmployees() {
-        return listOfOfficeEmployees;
-    }
-
-    public void setListOfOfficeEmployees(String listOfOfficeEmployees) {
-        this.listOfOfficeEmployees = listOfOfficeEmployees;
-    }
-
-    public String getListOfCurrentlyAvailableCars() {
-        return listOfCurrentlyAvailableCars;
-    }
-
-    public void setListOfCurrentlyAvailableCars(String listOfCurrentlyAvailableCars) {
-        this.listOfCurrentlyAvailableCars = listOfCurrentlyAvailableCars;
-    }
 }

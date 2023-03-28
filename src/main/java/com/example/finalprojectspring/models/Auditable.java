@@ -1,4 +1,4 @@
-package com.sda.study.springbootpractice.models;
+package com.example.finalprojectspring.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
