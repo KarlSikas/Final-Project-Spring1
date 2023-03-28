@@ -1,6 +1,8 @@
 package com.example.finalprojectspring.services;
 
+import com.example.finalprojectspring.exceptions.BranchNotFoundException;
 import com.example.finalprojectspring.exceptions.CarNotFoundException;
+import com.example.finalprojectspring.models.Branch;
 import com.example.finalprojectspring.models.Car;
 
 import java.util.List;
@@ -25,6 +27,13 @@ public interface CarService {
      */
     Car findCarByModelName(String modelName) throws CarNotFoundException;
 
+    /**
+     * To find a car by ID
+     *
+     * @param id Car ID
+     * @return Car
+     */
+    Car findCarById(Long id) throws CarNotFoundException;
 
     /**
      * To update on existing Car

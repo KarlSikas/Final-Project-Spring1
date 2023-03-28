@@ -8,13 +8,17 @@ package com.example.finalprojectspring.components;
 import com.example.finalprojectspring.exceptions.AuthorityNotFoundException;
 import com.example.finalprojectspring.exceptions.CarNotFoundException;
 import com.example.finalprojectspring.models.Authority;
+import com.example.finalprojectspring.models.Branch;
 import com.example.finalprojectspring.models.Car;
 import com.example.finalprojectspring.services.AuthorityService;
 import com.example.finalprojectspring.services.CarService;
-import com.example.finalprojectspring.services.UserService;
+import com.example.finalprojectspring.services.BranchService;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
+import java.util.Collections;
 
 import static com.example.finalprojectspring.utils.Constants.Security.*;
 
@@ -35,6 +39,7 @@ public class Datainit {
     }
     private void initCar() {
         System.out.println("Starting cars initialization...");
+
         Car car = new Car();
         car.setModelName("Ford");
         car.setColor("black");

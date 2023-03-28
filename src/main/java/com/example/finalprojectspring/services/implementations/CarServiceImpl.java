@@ -20,6 +20,7 @@ public class CarServiceImpl implements CarService {
 
     @Autowired
     private CarRepository carRepository;
+
     @Override
     public void addCar(Car car) {
 
@@ -27,6 +28,11 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public Car findCarByModelName(String modelName) throws CarNotFoundException {
+        return null;
+    }
+
+    @Override
+    public Car findCarById(Long id) throws CarNotFoundException {
         return null;
     }
 
