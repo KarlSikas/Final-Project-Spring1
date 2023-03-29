@@ -21,9 +21,13 @@ import static com.example.finalprojectspring.utils.Constants.Security.*;
 
 @Component
 public class Datainit {
+    @Autowired
+    private BranchService branchService;
 
     @Autowired
     private CarService carService;
+    @Autowired
+    private UserService userService;
    @Autowired
     private AuthorityService authorityService;
 
@@ -40,6 +44,17 @@ public class Datainit {
 
 
     private  void initBranch(){
+        System.out.println("Starting Branch initialization...");
+        Branch branch = new Branch();
+        branch.setAddress("Tallinn");
+
+        try {
+            Branch searchBranch = branchService.findBranchByAddress(branch.getAddress());
+            System.out.println("Cannot pre-initialize school: " + branch.getAddress());
+        } catch (BranchNotFoundException e) {
+            branchService.createBranch(branch);
+        }
+
 
     }
 
