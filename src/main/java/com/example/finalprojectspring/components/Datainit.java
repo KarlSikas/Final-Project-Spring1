@@ -33,7 +33,10 @@ public class Datainit {
 
     @PostConstruct
     public void init() {
+        initBranch();
         initCar();
+        initCustomer();
+        initBooking();
         initAuthority();
 
     }

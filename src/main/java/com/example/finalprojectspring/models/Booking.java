@@ -3,6 +3,7 @@ package com.example.finalprojectspring.models;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.hibernate.mapping.List;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -24,15 +25,15 @@ public class Booking extends Auditable<String> implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     public String dateOfBooking;
+    public User user;
+
     @OneToOne(cascade = CascadeType.MERGE)
-    private Customer customer;
-    @OneToOne(cascade = CascadeType.MERGE)
-    private Car car;
+    public Car car;
     public LocalDate dateFrom;
     public LocalDate dateTo;
 
     @OneToOne(cascade = CascadeType.MERGE)
-    private Branch branch;
+    public Branch branch;
 
     public String returnBranch;
     public int amount;
