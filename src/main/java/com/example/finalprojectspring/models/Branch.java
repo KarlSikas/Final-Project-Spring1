@@ -22,8 +22,7 @@ public class Branch extends Auditable<String> implements Serializable {
     private Long id;
 
     public String address;   //address with the city
-    @OneToMany(cascade = CascadeType.MERGE)
-    private List<Employee> specializedEmployees;
+
     @OneToMany(cascade = CascadeType.MERGE)
     private List<Car> specializedCars;
 

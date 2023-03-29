@@ -1,7 +1,9 @@
 package com.example.finalprojectspring.services;
 
 import com.example.finalprojectspring.exceptions.AuthorityNotFoundException;
+import com.example.finalprojectspring.exceptions.UserNotFoundException;
 import com.example.finalprojectspring.models.Authority;
+import com.example.finalprojectspring.models.User;
 
 import java.util.List;
 

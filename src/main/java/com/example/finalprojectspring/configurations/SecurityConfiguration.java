@@ -1,22 +1,26 @@
 package com.example.finalprojectspring.configurations;
 
-import com.sda.study.springbootpractice.services.implementations.CustomUserDetailsService;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import static com.sda.study.springbootpractice.utils.Constants.Security.*;
+import static com.example.finalprojectspring.utils.Constants.Security.*;
+
 
 /**
  * @author Sergei Oksanen
  * @Date 3/29/2023
  */
+
+
+
+/**
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -46,21 +50,21 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         String role = "ROLE_";
-        String admin = AUTHORITY_ADMIN.replace(role, "");
-        String teacher = AUTHORITY_TEACHER.replace(role, "");
-        String student = AUTHORITY_STUDENT.replace(role, "");
+        String owner = AUTHORITY_OWNER.replace(role, "");
+        String customer = AUTHORITY_CUSTOMER.replace(role, "");
+        String employee = AUTHORITY_EMPLOYEE.replace(role, "");
 
         httpSecurity.authorizeRequests()
                 .antMatchers("/", "/user/signup/**")
                 .permitAll()
                 .antMatchers("/user")
-                .hasRole(admin)
-                .antMatchers("/school/**")
-                .hasAnyRole(teacher, student, admin)
-                .antMatchers("/course/**")
-                .hasAnyRole(teacher)
-                .antMatchers("/student/**")
-                .hasRole(student)
+                .hasRole(owner)
+                .antMatchers("/branch/**")
+                .hasAnyRole(customer, employee, owner)
+                .antMatchers("/rental/**")
+                .hasAnyRole(employee)
+                .antMatchers("/booking/**")
+                .hasRole(customer)
                 .and()
                 .httpBasic()
                 .and()
@@ -71,3 +75,4 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .csrf().disable();
     }
 }
+**/

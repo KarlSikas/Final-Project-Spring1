@@ -7,7 +7,6 @@ import org.hibernate.mapping.List;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
 
 /**
  * @author Sergei Oksanen
@@ -25,7 +24,7 @@ public class Booking extends Auditable<String> implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     public String dateOfBooking;
-    public User user;
+
 
     @OneToOne(cascade = CascadeType.MERGE)
     public Car car;

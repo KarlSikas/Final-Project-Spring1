@@ -21,8 +21,7 @@ public class Return extends Auditable<String> implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToOne(cascade = CascadeType.MERGE)
-    private Employee employee;
+
     public LocalDate dateOfReturn;
     @OneToOne(cascade = CascadeType.MERGE)
     private Booking booking;

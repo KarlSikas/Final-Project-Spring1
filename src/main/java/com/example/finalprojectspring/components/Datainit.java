@@ -5,14 +5,11 @@ package com.example.finalprojectspring.components;
  * @Date 3/23/2023
  */
 
-import com.example.finalprojectspring.exceptions.AuthorityNotFoundException;
-import com.example.finalprojectspring.exceptions.CarNotFoundException;
-import com.example.finalprojectspring.models.Authority;
-import com.example.finalprojectspring.models.Branch;
-import com.example.finalprojectspring.models.Car;
-import com.example.finalprojectspring.services.AuthorityService;
-import com.example.finalprojectspring.services.CarService;
-import com.example.finalprojectspring.services.BranchService;
+
+import com.example.finalprojectspring.models.*;
+import com.example.finalprojectspring.exceptions.*;
+import com.example.finalprojectspring.services.*;
+
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -38,8 +35,15 @@ public class Datainit {
         initCustomer();
         initBooking();
         initAuthority();
+       /* initUser();*/
+    }
+
+
+    private  void initBranch(){
 
     }
+
+
     private void initCar() {
         System.out.println("Starting cars initialization...");
 
@@ -59,6 +63,14 @@ public class Datainit {
             carService.addCar(car);
         }
     }
+
+    private  void initCustomer(){
+
+    }
+
+    private  void initBooking(){
+
+    }
     private void initAuthority() {
         System.out.println("Starting initializing Authority..");
         Authority authorityAdmin = new Authority();
@@ -73,6 +85,29 @@ public class Datainit {
         authorityStudent.setName(AUTHORITY_CUSTOMER);
         createAuthority(authorityStudent);
     }
+
+   /** private void initUser() {
+        System.out.println("Starting initializing User..");
+
+        try {
+            Authority authority = authorityService.findAuthorityByName(AUTHORITY_OWNER);
+
+            User user = new User();
+            user.setUsername("admin@study.com");
+            user.setPassword("123456");
+            user.setAuthority(authority);
+
+            try {
+                User resultUser = UserService.findUserByUsername(user.getUsername());
+                System.out.println("Cannot pre-initialize user: " + user.getUsername());
+            } catch(UserNotFoundException e) {
+                UserService.createUser(user);
+            }
+        } catch (AuthorityNotFoundException e) {
+            System.out.println("Cannot pre-initialize User! Reason:  " + e.getLocalizedMessage());
+        }
+    }
+*/
     private void createAuthority(Authority authority) {
         try {
             Authority resultAuthority = authorityService.findAuthorityByName(authority.getName());
@@ -81,5 +116,6 @@ public class Datainit {
             authorityService.createAuthority(authority);
         }
     }
+
 
 }
