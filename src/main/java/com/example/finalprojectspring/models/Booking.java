@@ -1,9 +1,9 @@
 package com.example.finalprojectspring.models;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.hibernate.mapping.List;
+
 
 import java.io.Serializable;
 import java.time.LocalDate;

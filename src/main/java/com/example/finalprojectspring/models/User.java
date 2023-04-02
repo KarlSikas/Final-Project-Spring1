@@ -1,10 +1,9 @@
 package com.example.finalprojectspring.models;
 
-import jakarta.persistence.*;
 import lombok.Data;
-
 import lombok.EqualsAndHashCode;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -37,4 +36,5 @@ public class User extends Auditable<String> implements Serializable {
     private Authority authority;
 
     private boolean isActive;
+
 }

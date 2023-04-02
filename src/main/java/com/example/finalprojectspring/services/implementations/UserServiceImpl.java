@@ -8,23 +8,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+
+import javax.websocket.Encoder;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * @author Sergei Oksanen
- * @Date 3/28/2023
- */
+
 @Service
 @Transactional
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
- /**   @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;*/
+    /**
+     @Autowired
+     private BCryptPasswordEncoder bCryptPasswordEncoder;
+     */
+
 
     @Override
     public List<User> findAllUsers() {
@@ -42,11 +43,10 @@ public class UserServiceImpl implements UserService {
         return optionalUser.get();
     }
 
-
-
     @Override
     public void createUser(User user) {
-       /** user.setPassword(bCryptPasswordEncoder.encode(user.getPassword())); */
+        Encoder.Binary<String> bCryptPasswordEncoder;
+       /** user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));*/
         user.setActive(true);
         userRepository.save(user);
     }

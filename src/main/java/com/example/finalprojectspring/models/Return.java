@@ -1,12 +1,12 @@
 package com.example.finalprojectspring.models;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
+
 
 /**
  * @author Priit Enno
