@@ -25,6 +25,8 @@ public class Datainit {
 
     @Autowired
     private CarService carService;
+  /**  @Autowired
+    private BookingService bookingService; */
     @Autowired
     private AuthorityService authorityService;
     @Autowired
@@ -36,7 +38,6 @@ public class Datainit {
     public void init() {
         initBranch();
         initCar();
-        initCustomer();
         initBooking();
         initAuthority();
         initUser();

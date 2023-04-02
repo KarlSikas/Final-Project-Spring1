@@ -1,9 +1,7 @@
 package com.example.finalprojectspring.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -23,14 +21,19 @@ public class Car extends Auditable<String> implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
+    @Column(name = "MODEL",nullable = false)
     private String modelName;
+    @Column (name = "COLOR", nullable = false)
     private String color;
+    @Column (name = "BODY_TYPE", nullable = false)
     private String bodyType;
-
+    @Column(name = "YEAR_OF_MANUFACTURE", nullable = false)
     private int yearOfProd;
+    @Column(name = "MILEAGE", nullable = false)
     private int mileage;
+    @Column(name = "AMOUNT", nullable = false)
     private int amount;
+    @Column(name = "STATUS", nullable = false)
     private  boolean isBooked;
 
 }

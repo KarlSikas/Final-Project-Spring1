@@ -35,11 +35,15 @@ public interface CarService {
      */
     Car findCarById(Long id) throws CarNotFoundException;
 
+
+
+
     /**
      * To update on existing Car
      *
      * @param  car Car
      */
+
     void updateCar(Car car) throws CarNotFoundException;
 
     /**
@@ -49,4 +53,17 @@ public interface CarService {
      */
     List<Car> findAllCars();
 
+    /**
+     * To delete a Car by ID
+     *
+     * @param id Car ID
+     */
+    void deleteCarById(Long id) throws CarNotFoundException;
+
+    /**
+     * To restore a Car by ID
+     *
+     * @param id Car ID
+     */
+    void restoreCarById(Long id) throws CarNotFoundException;
 }
