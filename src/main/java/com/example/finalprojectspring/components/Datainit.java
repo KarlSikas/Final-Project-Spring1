@@ -109,7 +109,7 @@ public class Datainit {
             Authority authority = authorityService.findAuthorityByName(AUTHORITY_OWNER);
 
             User user = new User();
-            user.setUsername("admin@study.com");
+            user.setUsername("owner@rental.com");
             user.setPassword("123456");
             user.setAuthority(authority);
 
