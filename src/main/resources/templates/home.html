@@ -14,7 +14,7 @@
         <div class="p-5 mb-4 bg-light rounded-3">
             <div class="container-fluid py-5">
                 <h1 sec:authorize="isAuthenticated()" class="display-5 fw-bold">Welcome! <span th:text="${#authentication.name}"></span></h1>
-                <p class="col-md-8 fs-4">Car rental system is the centralized system for car booking and manage</p>
+                <p class="col-md-8 fs-4">Car rental system is the centralized system for booking cars</p>
             </div>
 
             <div sec:authorize="!isAuthenticated()">

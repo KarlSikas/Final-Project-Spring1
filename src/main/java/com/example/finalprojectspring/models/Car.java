@@ -15,8 +15,8 @@ import java.io.Serializable;
  */
 @Data
 @Entity
-@EqualsAndHashCode(callSuper = true)
-public class Car extends Auditable<String> implements Serializable {
+
+public class Car implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

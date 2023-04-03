@@ -17,7 +17,7 @@
                     <a class="nav-link" href="/CUSTOMER" sec:authorize="hasAnyRole('CUSTOMER', 'OWNER')">Customer</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/user" sec:authorize="hasRole('OWNER')">User</a>
+                    <a class="nav-link" href="/car" sec:authorize="hasRole('OWNER')">User</a>
                 </li>
             </ul>
             <div sec:authorize="isAuthenticated()" class="rightContainer">
