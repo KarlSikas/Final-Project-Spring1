@@ -28,7 +28,7 @@ public interface BranchService {
     /**
      * To find a branch by address
      *
-     * @param address Branch name
+     * @param address Branch address
      * @return Branch
      */
     Branch findBranchByAddress(String address) throws BranchNotFoundException;

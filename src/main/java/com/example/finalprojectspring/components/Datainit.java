@@ -9,7 +9,7 @@ package com.example.finalprojectspring.components;
 import com.example.finalprojectspring.models.*;
 import com.example.finalprojectspring.exceptions.*;
 import com.example.finalprojectspring.services.*;
-
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -25,8 +25,8 @@ public class Datainit {
 
     @Autowired
     private CarService carService;
-  /**  @Autowired
-    private BookingService bookingService; */
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
     @Autowired
     private AuthorityService authorityService;
     @Autowired
@@ -111,6 +111,11 @@ public class Datainit {
 
             User user = new User();
             user.setUsername("owner@rental.com");
+            user.setFirsName("Sergei");
+            user.setLastName("Oksanen");
+            user.setAddress("Tallinn");
+            user.setUserType(UserType.OWNER);
+            user.setActive(true);
             user.setPassword("123456");
             user.setAuthority(authority);
 

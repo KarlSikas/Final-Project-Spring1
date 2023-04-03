@@ -21,9 +21,11 @@ public class Branch extends Auditable<String> implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    public String address;   //address with the city
+    private  String address;   //address with the city
 
     @OneToMany(cascade = CascadeType.MERGE)
-    private List<Car> specializedCars;
+    public List<Car> specializedCars;
+
+    private boolean isActive;
 
 }
