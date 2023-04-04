@@ -10,7 +10,7 @@ import java.io.Serializable;
  * @author Sergei Oksanen
  * @Date 3/28/2023
  */
-@EqualsAndHashCode(callSuper = true)
+
 @Entity
 @Data
 @Table(name = "users")

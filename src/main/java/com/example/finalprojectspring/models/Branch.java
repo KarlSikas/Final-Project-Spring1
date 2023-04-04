@@ -13,8 +13,8 @@ import java.util.List;
  */
 @Data
 @Entity
-@EqualsAndHashCode(callSuper = true)
-public class Branch extends Auditable<String> implements Serializable {
+
+public class Branch  implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id

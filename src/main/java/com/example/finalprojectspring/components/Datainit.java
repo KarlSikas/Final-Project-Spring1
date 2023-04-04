@@ -6,8 +6,9 @@ package com.example.finalprojectspring.components;
  */
 
 
-import com.example.finalprojectspring.models.*;
+
 import com.example.finalprojectspring.exceptions.*;
+import com.example.finalprojectspring.models.*;
 import com.example.finalprojectspring.services.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import javax.annotation.PostConstruct;
@@ -70,7 +71,7 @@ public class Datainit {
         car.setYearOfProd(2023);
         car.setMileage(15000);
         car.setAmount(2);
-        car.setBooked(false);
+        car.setBooked(true);
 
         try {
             Car searchCar = carService.findCarByModelName(car.getModelName());
