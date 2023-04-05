@@ -1,5 +1,8 @@
 package com.example.finalprojectspring.controllers;
 
+import com.example.finalprojectspring.exceptions.UserNotFoundException;
+import com.example.finalprojectspring.models.User;
+import com.example.finalprojectspring.services.AuthorityService;
 import com.example.finalprojectspring.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,8 +24,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class UserController {
     @Autowired
     private UserService userService;
-/** */
-  /**  @Autowired
+
+   @Autowired
     private AuthorityService authorityService;
 
     @GetMapping
@@ -51,6 +54,6 @@ public class UserController {
             redirectAttributes.addFlashAttribute("messageType", "success");
             return "redirect:/";
         }
-    }*/
+    }
 }
 
