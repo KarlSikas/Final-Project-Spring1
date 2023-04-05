@@ -52,17 +52,17 @@
                 <td th:text="${car.isBooked}"></td>
                 <td>
                     <a class="btn btn-warning" role="button" th:href="@{/car/update/{id}(id=${car.id})}"
-                       th:if="${car.isBooked()}">
-                        <i class="bi bi-pencil-fill"></i>
+                       th:if="${car.isBooked()}"sec:authorize="hasAnyRole('EMPLOYEE', 'OWNER')">
+                        <div> update data</div>
                     </a>
 
-                    <a class="btn btn-danger" role="button" th:href="@{/car/delete/{id}(id=${car.id})}"
-                       th:if="${car.isBooked()}">
-                        <i class="bi bi-trash2-fill"></i>
+                    <a class="btn btn-success" role="button" th:href="@{/car/delete/{id}(id=${car.id})}"
+                       th:if="${car.isBooked()}"sec:authorize="hasAnyRole('EMPLOYEE', 'OWNER')">
+                        <div> allow rent</div>
                     </a>
-                    <a class="btn btn-success" role="button" th:href="@{/car/restore/{id}(id=${car.id})}"
-                       th:if="${!car.isBooked()}">
-                        <i class="bi bi-arrow-counterclockwise"></i>
+                    <a class="btn btn-danger" role="button" th:href="@{/car/restore/{id}(id=${car.id})}"
+                       th:if="${!car.isBooked()}"sec:authorize="hasAnyRole('EMPLOYEE', 'OWNER')">
+                        <div> return</div>
                     </a>
 
                 </td>

@@ -4,15 +4,10 @@ import com.example.finalprojectspring.exceptions.CarNotFoundException;
 import com.example.finalprojectspring.models.Car;
 import com.example.finalprojectspring.services.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 @RequestMapping("/car")
@@ -22,7 +17,7 @@ public class CarController {
 
     @GetMapping
     public String showCarListPage(Model model, @ModelAttribute("message") String message,
-                                     @ModelAttribute("messageType") String messageType) {
+                                  @ModelAttribute("messageType") String messageType) {
         model.addAttribute("cars", carService.findAllCars());
         return "car/list-car";
     }
@@ -50,41 +45,11 @@ public class CarController {
         }
 
     }
-    // PRIVATE METHODS //
-    private String handleException(RedirectAttributes redirectAttributes, Exception e) {
-        redirectAttributes.addFlashAttribute("message", e.getLocalizedMessage());
-        redirectAttributes.addFlashAttribute("messageType", "error");
-        return "redirect:/car";
-    }
-
-   /** @GetMapping("/{id}")
-    public String showCarViewPage(@PathVariable Long id, Model model, RedirectAttributes redirectAttributes) {
-        try {
-            model.addAttribute("car", carService.findCarById(id));
-            return "car/view-car";
-        } catch (CarNotFoundException e) {
-            return handleException(redirectAttributes, e);
-        }
-    }
-
-    @GetMapping("/delete/{id}")
-    public String deleteCar(@PathVariable Long id, RedirectAttributes redirectAttributes) {
-        try {
-            carService.deleteCarById(id);
-            redirectAttributes.addFlashAttribute("message", String.format("Car #%d deleted successfully!", id));
-            redirectAttributes.addFlashAttribute("messageType", "success");
-            return "redirect:/car";
-
-          return handleException(redirectAttributes, e);
-        }
-    }
-
-
 
     @GetMapping("/update/{id}")
     public String showUpdateCarPage(@PathVariable Long id, RedirectAttributes redirectAttributes,
-                                       @RequestParam(value="car", required=false) Car car,
-                                       Model model) {
+                                    @RequestParam(value = "car", required = false) Car car,
+                                    Model model) {
         if (car == null) {
             try {
                 model.addAttribute("car", carService.findCarById(id));
@@ -108,6 +73,35 @@ public class CarController {
         }
     }
 
+    private String handleException(RedirectAttributes redirectAttributes, CarNotFoundException e) {
+        redirectAttributes.addFlashAttribute("message", e.getLocalizedMessage());
+        redirectAttributes.addFlashAttribute("messageType", "error");
+        return "redirect:/car";
+    }
+
+
+  @GetMapping("/{id}")
+    public String showCarViewPage(@PathVariable Long id, Model model, RedirectAttributes redirectAttributes) {
+        try {
+            model.addAttribute("car", carService.findCarById(id));
+            return "car/view-car";
+        } catch (CarNotFoundException e) {
+            return handleException(redirectAttributes, e);
+        }
+    }
+
+
+    @GetMapping("/delete/{id}")
+    public String deleteCar(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+        try {
+            carService.deleteCarById(id);
+            redirectAttributes.addFlashAttribute("message", String.format("Car #%d deleted successfully!", id));
+            redirectAttributes.addFlashAttribute("messageType", "success");
+            return "redirect:/car";
+        } catch (CarNotFoundException e) {
+            return handleException(redirectAttributes, e);
+        }
+    }
     @GetMapping("/restore/{id}")
     public String restoreCar(@PathVariable Long id, RedirectAttributes redirectAttributes) {
         try {
@@ -115,10 +109,9 @@ public class CarController {
             redirectAttributes.addFlashAttribute("message", String.format("Car #%d restored successfully!", id));
             redirectAttributes.addFlashAttribute("messageType", "success");
             return "redirect:/car";
-        } catch (CarNotFoundException | CourseNotFoundException e) {
+        } catch (CarNotFoundException e) {
             return handleException(redirectAttributes, e);
         }
-    }
-
-    */
 }
+}
+
