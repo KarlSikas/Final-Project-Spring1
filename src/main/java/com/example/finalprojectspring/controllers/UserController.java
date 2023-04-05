@@ -21,7 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class UserController {
     @Autowired
     private UserService userService;
-
+/** */
   /**  @Autowired
     private AuthorityService authorityService;
 
