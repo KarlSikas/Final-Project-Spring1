@@ -27,6 +27,36 @@ public class CarController {
         return "car/list-car";
     }
 
+
+    @GetMapping("/create")
+    public String showCreateCarPage(@ModelAttribute("car") Car car,
+                                    @ModelAttribute("message") String message,
+                                    @ModelAttribute("messageType") String messageType) {
+        return "car/create-car";
+    }
+
+    @PostMapping
+    public String createCar(Car car, RedirectAttributes redirectAttributes) {
+        try {
+            Car searchCar = carService.findCarByModelName(car.getModelName());
+            redirectAttributes.addFlashAttribute("message", String.format("Car(%s) already exists!", car.getModelName()));
+            redirectAttributes.addFlashAttribute("messageType", "error");
+            return "redirect:/car/create-car";
+        } catch (CarNotFoundException e) {
+            carService.addCar((car));
+            redirectAttributes.addFlashAttribute("message", String.format("Car(%s) has been created successfully!", car.getModelName()));
+            redirectAttributes.addFlashAttribute("messageType", "success");
+            return "redirect:/car";
+        }
+
+    }
+    // PRIVATE METHODS //
+    private String handleException(RedirectAttributes redirectAttributes, Exception e) {
+        redirectAttributes.addFlashAttribute("message", e.getLocalizedMessage());
+        redirectAttributes.addFlashAttribute("messageType", "error");
+        return "redirect:/car";
+    }
+
    /** @GetMapping("/{id}")
     public String showCarViewPage(@PathVariable Long id, Model model, RedirectAttributes redirectAttributes) {
         try {
@@ -49,29 +79,7 @@ public class CarController {
         }
     }
 
-    //To show the create car form page
-    @GetMapping("/create")
-    public String showCreateCarPage(@ModelAttribute("car") Car car,
-                                       @ModelAttribute("message") String message,
-                                       @ModelAttribute("messageType") String messageType) {
-        return "car/create-car";
-    }
 
-    // Called when we press submit button in the create-car form
-    @PostMapping
-    public String createCar(Car car, RedirectAttributes redirectAttributes) {
-        try {
-            Car searchCar = carService.findCarByModelName(car.getModelName());
-            redirectAttributes.addFlashAttribute("message", String.format("Car(%s) already exists!", car.getModelName()));
-            redirectAttributes.addFlashAttribute("messageType", "error");
-            return "redirect:/car/create-car";
-        } catch (CarNotFoundException e) {
-            carService.addCar((car));
-            redirectAttributes.addFlashAttribute("message", String.format("Car(%s) has been created successfully!", car.getModelName()));
-            redirectAttributes.addFlashAttribute("messageType", "success");
-            return "redirect:/car";
-        }
-    }
 
     @GetMapping("/update/{id}")
     public String showUpdateCarPage(@PathVariable Long id, RedirectAttributes redirectAttributes,
@@ -112,10 +120,5 @@ public class CarController {
         }
     }
 
-    // PRIVATE METHODS //
-    private String handleException(RedirectAttributes redirectAttributes, Exception e) {
-        redirectAttributes.addFlashAttribute("message", e.getLocalizedMessage());
-        redirectAttributes.addFlashAttribute("messageType", "error");
-        return "redirect:/car";
-    } */
+    */
 }
