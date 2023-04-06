@@ -1,6 +1,8 @@
 package com.example.finalprojectspring.services;
 
+import com.example.finalprojectspring.exceptions.CarNotFoundException;
 import com.example.finalprojectspring.exceptions.UserNotFoundException;
+import com.example.finalprojectspring.models.Car;
 import com.example.finalprojectspring.models.User;
 
 import java.util.List;
@@ -31,4 +33,12 @@ public interface UserService {
      * @param user User
      */
     void createUser(User user);
+
+    /**
+     * To update on existing User
+     *
+     * @param  user User
+     */
+
+    void updateUser(User user) throws CarNotFoundException, UserNotFoundException;
 }

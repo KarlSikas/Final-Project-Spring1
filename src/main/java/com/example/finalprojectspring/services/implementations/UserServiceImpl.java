@@ -1,6 +1,8 @@
 package com.example.finalprojectspring.services.implementations;
 
+import com.example.finalprojectspring.exceptions.CarNotFoundException;
 import com.example.finalprojectspring.exceptions.UserNotFoundException;
+import com.example.finalprojectspring.models.Car;
 import com.example.finalprojectspring.models.User;
 import com.example.finalprojectspring.repositories.UserRepository;
 import com.example.finalprojectspring.services.UserService;
@@ -46,5 +48,12 @@ public class UserServiceImpl implements UserService {
        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActive(true);
         userRepository.save(user);
+    }
+
+    @Override
+    public void updateUser(User user) throws UserNotFoundException {
+        if(findUserByUsername(user.getUsername()) != null) {
+            userRepository.saveAndFlush(user);
+        }
     }
 }

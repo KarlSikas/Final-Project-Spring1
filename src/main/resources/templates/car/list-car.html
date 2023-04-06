@@ -32,8 +32,6 @@
             <th scope="col">COLOR</th>
             <th scope="col">BODY_TYPE</th>
             <th scope="col">YEAR_OF_MANUFACTURE</th>
-            <th scope="col">MILEAGE</th>
-            <th scope="col">AMOUNT</th>
             <th scope="col">FREE FOR BOOKING</th>
             </thead>
             <tbody>
@@ -47,8 +45,6 @@
                 <td th:text="${car.color}"></td>
                 <td th:text="${car.bodyType}"></td>
                 <td th:text="${car.yearOfProd}"></td>
-                <td th:text="${car.mileage}"></td>
-                <td th:text="${car.amount}"></td>
                 <td th:text="${car.isBooked}"></td>
                 <td>
                     <a class="btn btn-warning" role="button" th:href="@{/car/update/{id}(id=${car.id})}"

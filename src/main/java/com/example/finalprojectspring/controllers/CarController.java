@@ -95,7 +95,7 @@ public class CarController {
     public String deleteCar(@PathVariable Long id, RedirectAttributes redirectAttributes) {
         try {
             carService.deleteCarById(id);
-            redirectAttributes.addFlashAttribute("message", String.format("Car #%d deleted successfully!", id));
+            redirectAttributes.addFlashAttribute("message", String.format("Car #%d rented successfully!", id));
             redirectAttributes.addFlashAttribute("messageType", "success");
             return "redirect:/car";
         } catch (CarNotFoundException e) {
@@ -106,7 +106,7 @@ public class CarController {
     public String restoreCar(@PathVariable Long id, RedirectAttributes redirectAttributes) {
         try {
             carService.restoreCarById(id);
-            redirectAttributes.addFlashAttribute("message", String.format("Car #%d restored successfully!", id));
+            redirectAttributes.addFlashAttribute("message", String.format("Car #%d returned successfully!", id));
             redirectAttributes.addFlashAttribute("messageType", "success");
             return "redirect:/car";
         } catch (CarNotFoundException e) {

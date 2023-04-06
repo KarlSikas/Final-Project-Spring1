@@ -1,16 +1,16 @@
 package com.example.finalprojectspring.controllers;
 
+
+import com.example.finalprojectspring.exceptions.CarNotFoundException;
 import com.example.finalprojectspring.exceptions.UserNotFoundException;
+import com.example.finalprojectspring.models.Car;
 import com.example.finalprojectspring.models.User;
 import com.example.finalprojectspring.services.AuthorityService;
 import com.example.finalprojectspring.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
@@ -25,7 +25,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-   @Autowired
+    @Autowired
     private AuthorityService authorityService;
 
     @GetMapping
@@ -47,7 +47,7 @@ public class UserController {
             userService.findUserByUsername(user.getUsername());
             redirectAttributes.addFlashAttribute("message", String.format("User(%s) already exists!", user.getUsername()));
             redirectAttributes.addFlashAttribute("messageType", "error");
-            return "redirect:/school/signup";
+            return "redirect:/home/signup";
         } catch (UserNotFoundException e) {
             userService.createUser(user);
             redirectAttributes.addFlashAttribute("message", "Signup successful!");
@@ -55,5 +55,32 @@ public class UserController {
             return "redirect:/";
         }
     }
-}
+    @GetMapping("/update/{username}")
+    public String showUpdateUserPage(@PathVariable String username, RedirectAttributes redirectAttributes,
+                                    @RequestParam(value = "user", required = false) User user,
+                                    Model model) {
+        if (user == null) {
+            try {
+                model.addAttribute("user", userService.findUserByUsername(username));
+            } catch (UserNotFoundException e) {
+                return "redirect:/";
+            }
+        }
 
+        return "user/update-user";
+    }
+
+    @PostMapping("/update")
+    public String updateUser(User user, RedirectAttributes redirectAttributes) {
+        try {
+            userService.updateUser(user);
+            redirectAttributes.addFlashAttribute("message", String.format("User(id=%d) has been updated successfully!", user.getId()));
+            redirectAttributes.addFlashAttribute("messageType", "success");
+            return "redirect:/user";
+        } catch (UserNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (CarNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}

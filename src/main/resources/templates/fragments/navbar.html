@@ -17,10 +17,10 @@
                     <a class="nav-link" href="/branch" sec:authorize="hasAnyRole('CUSTOMER', 'EMPLOYEE','OWNER')">Branches</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/booking" sec:authorize="hasAnyRole('EMPLOYEE', 'OWNER')">Employees</a>
+                    <a class="nav-link" href="/booking" sec:authorize="hasAnyRole('EMPLOYEE', 'OWNER')">Bookings</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/revenue" sec:authorize="hasAnyRole( 'OWNER')">Customers</a>
+                    <a class="nav-link" href="/revenue" sec:authorize="hasAnyRole( 'OWNER')">Revenue</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/user" sec:authorize="hasRole('OWNER')">Users</a>
