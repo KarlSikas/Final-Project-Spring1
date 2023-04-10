@@ -1,18 +1,28 @@
 package com.example.finalprojectspring.models;
 
+import lombok.Data;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
- * @author Priit Enno
+ * @author Sergei Oksanen
  * @ Date 22.03.2023
  */
-public class Revenue {
+@Entity
+@Data
+public class Revenue extends  Return {
 
-    public int sumOfAmountsForCarRental;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-    public int getSumOfAmountsForCarRental() {
-        return sumOfAmountsForCarRental;
-    }
+    private int pricePerDay;
 
-    public void setSumOfAmountsForCarRental(int sumOfAmountsForCarRental) {
-        this.sumOfAmountsForCarRental = sumOfAmountsForCarRental;
-    }
+    private int usingDays;
+
+    private int percForAdditionalComm;
+
 }

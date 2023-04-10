@@ -1,6 +1,7 @@
 package com.example.finalprojectspring.services;
 
 import com.example.finalprojectspring.exceptions.BranchNotFoundException;
+import com.example.finalprojectspring.models.Authority;
 import com.example.finalprojectspring.models.Branch;
 
 import java.util.List;

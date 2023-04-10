@@ -23,19 +23,19 @@ public class Booking extends Auditable<String> implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    public String dateOfBooking;
 
+    public String dateOfBooking;
 
     @OneToOne(cascade = CascadeType.MERGE)
     public Car car;
+
     public LocalDate dateFrom;
+
     public LocalDate dateTo;
 
     @OneToOne(cascade = CascadeType.MERGE)
     public Branch branch;
 
     public String returnBranch;
-    public int amount;
-
 
 }

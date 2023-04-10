@@ -1,11 +1,13 @@
 package com.example.finalprojectspring.services.implementations;
 
 import com.example.finalprojectspring.exceptions.BranchNotFoundException;
+import com.example.finalprojectspring.models.Authority;
 import com.example.finalprojectspring.models.Branch;
 import com.example.finalprojectspring.repositories.BranchRepository;
 import com.example.finalprojectspring.services.BranchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,6 +17,7 @@ import java.util.Optional;
  * @Date 3/28/2023
  */
 @Service
+@Transactional
 public class BranchServiceImpl implements BranchService {
     @Autowired
     private BranchRepository branchRepository;

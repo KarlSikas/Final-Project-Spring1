@@ -36,7 +36,7 @@ public class Datainit {
 
 
     @PostConstruct
-    public void init() {
+    public void init() throws BranchNotFoundException {
         initBranch();
         initCar();
         initBooking();
@@ -61,16 +61,17 @@ public class Datainit {
     }
 
 
-    private void initCar() {
+    private void initCar() throws BranchNotFoundException {
         System.out.println("Starting cars initialization...");
+        Branch searchBranch = branchService.findBranchByAddress("Tallinn");
 
         Car car = new Car();
         car.setModelName("Ford");
         car.setColor("black");
         car.setBodyType("sedan");
         car.setYearOfProd(2023);
+        car.setBranch(searchBranch);
         car.setMileage(15000);
-        car.setAmount(2);
         car.setBooked(true);
 
         try {

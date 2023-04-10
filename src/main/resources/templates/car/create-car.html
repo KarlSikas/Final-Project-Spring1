@@ -44,8 +44,12 @@
       </div>
       <br/>
       <div class="input-group">
-        <span class="input-group-text">Amount</span>
-        <input type="text" aria-label="Amount" class="form-control" th:field="*{amount}" required>
+        <span class="input-group-text">Branch</span>
+
+        <select class="form-select" aria-label="branches" th:field="*{branch.id}">
+          <option th:each="branch: ${branches}" th:text="${branch.name.replace('_', ' ')}" th:value="${branch.id}"></option>
+        </select>
+
       </div>
 
 

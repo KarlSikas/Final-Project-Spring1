@@ -63,7 +63,6 @@ public class UserController {
             try {
                 model.addAttribute("user", userService.findUserByUsername(username));
             } catch (UserNotFoundException e) {
-                return "redirect:/";
             }
         }
 
@@ -71,15 +70,13 @@ public class UserController {
     }
 
     @PostMapping("/update")
-    public String updateUser(User user, RedirectAttributes redirectAttributes) {
+    public String updateUser(User user, RedirectAttributes redirectAttributes) throws CarNotFoundException {
         try {
             userService.updateUser(user);
             redirectAttributes.addFlashAttribute("message", String.format("User(id=%d) has been updated successfully!", user.getId()));
             redirectAttributes.addFlashAttribute("messageType", "success");
             return "redirect:/user";
         } catch (UserNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (CarNotFoundException e) {
             throw new RuntimeException(e);
         }
     }

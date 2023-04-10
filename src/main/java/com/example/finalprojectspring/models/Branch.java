@@ -23,9 +23,6 @@ public class Branch  implements Serializable {
 
     private  String address;   //address with the city
 
-    @OneToMany(cascade = CascadeType.MERGE)
-    public List<Car> specializedCars;
-
     private boolean isActive;
 
 }

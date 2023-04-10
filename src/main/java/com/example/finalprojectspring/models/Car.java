@@ -5,10 +5,6 @@ import javax.persistence.*;
 import lombok.Data;
 
 
-
-import java.awt.*;
-import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
 import java.io.Serializable;
 
 /**
@@ -34,7 +30,8 @@ public class Car implements Serializable {
 
     private int mileage;
 
-    private int amount;
+    @OneToOne(cascade = CascadeType.MERGE)
+    private Branch branch;
 
     private  boolean isBooked;
 }
