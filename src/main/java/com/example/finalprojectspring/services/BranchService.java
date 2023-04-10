@@ -7,7 +7,7 @@ import com.example.finalprojectspring.models.Branch;
 import java.util.List;
 
 /**
- * @author Sergei Oksanen
+ * @author Karl-Erik Sirkas
  * @Date 3/28/2023
  */
 public interface BranchService {

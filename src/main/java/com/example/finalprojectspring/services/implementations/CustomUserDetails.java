@@ -11,7 +11,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 /**
- * @author Sergei Oksanen
+ * @author Karl-Erik Sirkas
  * @Date 3/29/2023
  */
 

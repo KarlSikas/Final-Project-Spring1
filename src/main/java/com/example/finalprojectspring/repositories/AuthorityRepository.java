@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 /**
- * @author Sergei Oksanen
+ * @author Karl-Erik Sirkas
  * @Date 3/28/2023
  */
 public interface AuthorityRepository extends JpaRepository<Authority, Long> {

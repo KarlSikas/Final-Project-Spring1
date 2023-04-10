@@ -1,7 +1,7 @@
 package com.example.finalprojectspring.exceptions;
 
 /**
- * @author Sergei Oksanen
+ * @author Karl-Erik Sirkas
  * @Date 3/28/2023
  */
 public class BranchNotFoundException extends Exception {

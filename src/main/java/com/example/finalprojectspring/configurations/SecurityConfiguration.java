@@ -16,7 +16,7 @@ import static com.example.finalprojectspring.utils.Constants.Security.*;
 
 
 /**
- * @author Sergei Oksanen
+ * @author Karl-Erik Sirkas
  * @Date 3/29/2023
  */
 

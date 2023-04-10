@@ -1,7 +1,7 @@
 package com.example.finalprojectspring.components;
 
 /**
- * @author Sergei Oksanen
+ * @author Karl-Erik Sirkas
  * @Date 3/23/2023
  */
 

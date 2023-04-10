@@ -8,7 +8,7 @@ import com.example.finalprojectspring.models.Car;
 import java.util.List;
 
 /**
- * @author Priit Enno
+ * @author Karl-Erik Sirkas
  * @ Date 22.03.2023
  */
 public interface CarService {

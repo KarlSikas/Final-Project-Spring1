@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- * @author Sergei Oksanen
+ * @author Karl-Erik Sirkas
  * @ Date 22.03.2023
  */
 @Entity

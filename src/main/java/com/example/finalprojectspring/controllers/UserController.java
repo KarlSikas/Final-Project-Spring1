@@ -16,7 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 /**
  * Controller to handle all user related requests
  *
- * @author Sergei Oksanen
+ * @author Karl-Erik Sirkas
  * @Date 13.03.2023
  */
 @Controller

@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
- * @author Sergei Oksanen
+ * @author Karl-Erik Sirkas
  * @Date 3/28/2023
  */
 @EqualsAndHashCode(callSuper = true)

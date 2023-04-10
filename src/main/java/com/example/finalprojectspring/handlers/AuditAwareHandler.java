@@ -7,7 +7,7 @@ import java.util.Optional;
 
 
 /**
- * @author Sergei Oksanen
+ * @author Karl-Erik Sirkas
  * @Date 3/28/2023
  */
 public class AuditAwareHandler implements AuditorAware<String> {

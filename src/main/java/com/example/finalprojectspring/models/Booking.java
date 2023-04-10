@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
- * @author Sergei Oksanen
+ * @author Karl-Erik Sirkas
  * @ Date 22.03.2023
  */
 
